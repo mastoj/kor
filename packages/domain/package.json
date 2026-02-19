@@ -11,8 +11,12 @@
     "@workspace/db": "workspace:*",
     "@workspace/shared": "workspace:*"
   },
+  "scripts": {
+    "test": "vitest run"
+  },
   "devDependencies": {
     "@workspace/typescript-config": "workspace:*",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^3.0.0"
   }
 }
