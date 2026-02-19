@@ -8,6 +8,7 @@ Project context is maintained in `.ai/`:
 - `.ai/conventions.yaml` — module system, naming, DB dialects
 - `.ai/commands.yaml` — common commands and dev URLs
 - `.ai/snippets.yaml` — how to add tRPC procedures, Drizzle tables, domain services
+- `.ai/commit.yaml` — commit message format and conventions
 
 ## Adding UI Components
 

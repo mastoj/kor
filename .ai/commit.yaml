@@ -1,0 +1,7 @@
+format: conventional  # feat, fix, chore, docs, refactor, test, style, ci
+scopes: [web, api, ui, db, domain, shared, config]
+max_subject_length: 72
+body: optional
+footer:
+  co_author: true  # always add Co-Authored-By when AI-assisted
+breaking_changes: "BREAKING CHANGE: <description> in footer"
