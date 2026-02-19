@@ -22,11 +22,14 @@ This will:
 ```bash
 cd <project-name>
 pnpm install
+pnpm db:push
 pnpm dev
 ```
 
-- **Web app** — [http://localhost:3000](http://localhost:3000)
-- **API** — [http://localhost:3001](http://localhost:3001)
+- **Home** — [http://localhost:3000](http://localhost:3000)
+- **tRPC demo** — [http://localhost:3000/trpc-demo](http://localhost:3000/trpc-demo)
+- **Design system** — [http://localhost:3000/design](http://localhost:3000/design)
+- **API health** — [http://localhost:3001/health](http://localhost:3001/health)
 
 ## What's inside
 
