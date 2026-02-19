@@ -1,8 +1,5 @@
 {
   "extends": "@workspace/typescript-config/node.json",
-  "compilerOptions": {
-    "baseUrl": "."
-  },
   "include": ["src", "drizzle.config.ts"],
   "exclude": ["node_modules"]
 }
