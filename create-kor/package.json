@@ -1,0 +1,16 @@
+{
+  "name": "create-kor",
+  "version": "0.1.0",
+  "description": "Create a new kor project",
+  "type": "module",
+  "bin": {
+    "create-kor": "./index.js"
+  },
+  "files": ["index.js"],
+  "dependencies": {
+    "tiged": "^2.12.7"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
