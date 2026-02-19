@@ -48,6 +48,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@workspace/ui/components/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@workspace/ui/components/carousel";
+import {
+  type ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@workspace/ui/components/chart";
 import { Checkbox } from "@workspace/ui/components/checkbox";
 import {
   Collapsible,
@@ -180,6 +193,7 @@ import {
 } from "@workspace/ui/components/sheet";
 import { Skeleton } from "@workspace/ui/components/skeleton";
 import { Slider } from "@workspace/ui/components/slider";
+import { Toaster } from "@workspace/ui/components/sonner";
 import { Spinner } from "@workspace/ui/components/spinner";
 import { Switch } from "@workspace/ui/components/switch";
 import {
@@ -218,6 +232,8 @@ import {
   UnderlineIcon,
 } from "lucide-react";
 import * as React from "react";
+import { Bar, BarChart, XAxis } from "recharts";
+import { toast } from "sonner";
 
 const NAV_ITEMS = [
   { id: "buttons", label: "Buttons" },
@@ -291,12 +307,26 @@ function ComponentSection({
   );
 }
 
+const chartData = [
+  { month: "Jan", value: 186 },
+  { month: "Feb", value: 305 },
+  { month: "Mar", value: 237 },
+  { month: "Apr", value: 273 },
+  { month: "May", value: 209 },
+  { month: "Jun", value: 214 },
+];
+
+const chartConfig = {
+  value: { label: "Visitors", color: "var(--chart-1)" },
+} satisfies ChartConfig;
+
 export function DesignGuide() {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
   const [progress, setProgress] = React.useState(60);
 
   return (
     <TooltipProvider>
+      <Toaster />
       <div className="mx-auto max-w-5xl space-y-12 px-4 py-10">
         <header>
           <h1 className="text-3xl font-bold tracking-tight text-balance">
@@ -1071,6 +1101,64 @@ export function DesignGuide() {
   </EmptyContent>
 </Empty>`}
           />
+          <ComponentCard
+            name="Toast (Sonner)"
+            className="sm:col-span-2 lg:col-span-3"
+            preview={
+              <div className="flex flex-wrap justify-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => toast("Event has been created")}
+                >
+                  Default
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => toast.success("Changes saved successfully")}
+                >
+                  Success
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => toast.error("Something went wrong")}
+                >
+                  Error
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => toast.warning("Low disk space")}
+                >
+                  Warning
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => toast.info("New version available")}
+                >
+                  Info
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => toast.loading("Saving…")}
+                >
+                  Loading
+                </Button>
+              </div>
+            }
+            usage={`import { toast } from "sonner"
+
+toast("Event has been created")
+toast.success("Changes saved successfully")
+toast.error("Something went wrong")
+toast.warning("Low disk space")
+toast.info("New version available")
+toast.loading("Saving…")`}
+          />
         </ComponentSection>
 
         {/* ── OVERLAYS ── */}
@@ -1513,6 +1601,65 @@ export function DesignGuide() {
     Hidden until toggled
   </CollapsibleContent>
 </Collapsible>`}
+          />
+          <ComponentCard
+            name="Carousel"
+            className="sm:col-span-2"
+            preview={
+              <Carousel className="w-full max-w-xs">
+                <CarouselContent>
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <CarouselItem key={i}>
+                      <div className="flex h-32 items-center justify-center rounded-lg border bg-muted text-sm font-medium">
+                        Slide {i}
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-2" />
+                <CarouselNext className="right-2" />
+              </Carousel>
+            }
+            usage={`<Carousel>
+  <CarouselContent>
+    {items.map((item) => (
+      <CarouselItem key={item.id}>
+        {/* slide content */}
+      </CarouselItem>
+    ))}
+  </CarouselContent>
+  <CarouselPrevious />
+  <CarouselNext />
+</Carousel>`}
+          />
+          <ComponentCard
+            name="Chart"
+            className="sm:col-span-2 lg:col-span-3"
+            preview={
+              <ChartContainer config={chartConfig} className="h-48 w-full">
+                <BarChart data={chartData}>
+                  <XAxis
+                    dataKey="month"
+                    tickLine={false}
+                    axisLine={false}
+                    tick={{ fontSize: 12 }}
+                  />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Bar dataKey="value" fill="var(--color-value)" radius={4} />
+                </BarChart>
+              </ChartContainer>
+            }
+            usage={`const chartConfig = {
+  value: { label: "Visitors", color: "var(--chart-1)" },
+} satisfies ChartConfig
+
+<ChartContainer config={chartConfig} className="h-48 w-full">
+  <BarChart data={data}>
+    <XAxis dataKey="month" tickLine={false} axisLine={false} />
+    <ChartTooltip content={<ChartTooltipContent />} />
+    <Bar dataKey="value" fill="var(--color-value)" radius={4} />
+  </BarChart>
+</ChartContainer>`}
           />
         </ComponentSection>
 

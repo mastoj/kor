@@ -13,7 +13,8 @@
       "**/coverage",
       "pnpm-lock.yaml",
       "packages/typescript-config/**",
-      ".claude/**"
+      ".claude/**",
+      ".agents/**"
     ]
   },
   "formatter": {

@@ -3,6 +3,7 @@
 import { getQueryClient } from "@/lib/query-client";
 import { TRPCProvider, trpcClient } from "@/lib/trpc";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@workspace/ui/components/sonner";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import type * as React from "react";
 
@@ -20,6 +21,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
           enableColorScheme
         >
           {children}
+          <Toaster />
         </NextThemesProvider>
       </TRPCProvider>
     </QueryClientProvider>
