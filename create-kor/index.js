@@ -53,5 +53,11 @@ execSync("git init && git add . && git commit -m 'Initial commit'", {
 
 console.log("\nDone! Next steps:\n");
 console.log(`  cd ${projectName}`);
-console.log("  pnpm install");
-console.log("  pnpm dev");
+console.log("");
+console.log("  If you have Make installed:");
+console.log("    make kor");
+console.log("");
+console.log("  Otherwise:");
+console.log("    pnpm install");
+console.log("    pnpm db:push");
+console.log("    pnpm dev");
