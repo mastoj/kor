@@ -9,6 +9,7 @@ Project context is maintained in `.ai/`:
 - `.ai/commands.yaml` — common commands and dev URLs
 - `.ai/snippets.yaml` — how to add tRPC procedures, Drizzle tables, domain services
 - `.ai/commit.yaml` — commit message format and conventions
+- `.ai/linting.yaml` — biome setup, rules, and overrides
 - `.ai/testing.yaml` — testing setup, conventions, and how to add tests
 
 ## Adding UI Components

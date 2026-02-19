@@ -5,8 +5,9 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
     "db:generate": "turbo db:generate --filter=@workspace/db",
     "db:push": "turbo db:push --filter=@workspace/db",
     "test": "vitest run",
@@ -15,10 +16,9 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@workspace/eslint-config": "workspace:*",
+    "@biomejs/biome": "^1.9.4",
     "@workspace/typescript-config": "workspace:*",
     "husky": "^9.1.7",
-    "prettier": "^3.8.1",
     "turbo": "^2.8.1",
     "typescript": "5.9.3",
     "vitest": "^3.0.0"
@@ -28,6 +28,6 @@
     "node": ">=20"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["better-sqlite3", "esbuild"]
+    "onlyBuiltDependencies": ["@biomejs/biome", "better-sqlite3", "esbuild"]
   }
 }

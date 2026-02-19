@@ -1,0 +1,42 @@
+tool: biome  # replaces eslint + prettier
+config: biome.json  # single root config, covers all apps and packages
+
+commands:
+  check: pnpm lint           # check lint + formatting (used in CI and pre-commit)
+  fix: pnpm lint:fix         # auto-fix lint + formatting issues
+  format_only: pnpm format   # format only (no lint)
+
+pre_commit:
+  hook: .husky/pre-commit
+  runs: [pnpm lint, pnpm test]
+
+rules:
+  base: recommended
+  disabled_globally:
+    - style/noNonNullAssertion  # common pattern in TypeScript codebases
+  css_linting: disabled         # Tailwind custom directives (e.g. @source) confuse the CSS linter
+
+overrides:
+  packages/ui/src/components/**:
+    note: shadcn/ui generated components — several rules relaxed to avoid noisy false positives
+    disabled:
+      - a11y/noRedundantRoles
+      - a11y/useFocusableInteractive
+      - a11y/useSemanticElements
+      - security/noDangerouslySetInnerHtml
+      - suspicious/noArrayIndexKey
+      - suspicious/noDoubleEquals
+      - correctness/useExhaustiveDependencies
+
+ignored_paths:
+  - packages/typescript-config/**  # tsconfig files use JSON5 (trailing commas, comments)
+  - pnpm-lock.yaml
+  - "**/node_modules"
+  - "**/.next"
+  - "**/dist"
+  - "**/coverage"
+
+notes:
+  - biome runs from the repo root — no per-package lint scripts needed
+  - turbo lint task has been removed; use pnpm lint directly
+  - biome handles both formatting and linting in one pass

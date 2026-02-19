@@ -1,56 +1,223 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { cn } from "@workspace/ui/lib/utils"
-import { Button } from "@workspace/ui/components/button"
-import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from "@workspace/ui/components/button-group"
-import { Toggle } from "@workspace/ui/components/toggle"
-import { ToggleGroup, ToggleGroupItem } from "@workspace/ui/components/toggle-group"
-import { Input } from "@workspace/ui/components/input"
-import { Textarea } from "@workspace/ui/components/textarea"
-import { Checkbox } from "@workspace/ui/components/checkbox"
-import { RadioGroup, RadioGroupItem } from "@workspace/ui/components/radio-group"
-import { Switch } from "@workspace/ui/components/switch"
-import { Slider } from "@workspace/ui/components/slider"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@workspace/ui/components/select"
-import { NativeSelect } from "@workspace/ui/components/native-select"
-import { Combobox, ComboboxContent, ComboboxInput, ComboboxItem, ComboboxList } from "@workspace/ui/components/combobox"
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@workspace/ui/components/input-otp"
-import { InputGroup, InputGroupAddon, InputGroupInput } from "@workspace/ui/components/input-group"
-import { Calendar } from "@workspace/ui/components/calendar"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@workspace/ui/components/card"
-import { Separator } from "@workspace/ui/components/separator"
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@workspace/ui/components/resizable"
-import { AspectRatio } from "@workspace/ui/components/aspect-ratio"
-import { ScrollArea } from "@workspace/ui/components/scroll-area"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@workspace/ui/components/tabs"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@workspace/ui/components/breadcrumb"
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@workspace/ui/components/pagination"
-import { Alert, AlertDescription, AlertTitle } from "@workspace/ui/components/alert"
-import { Progress } from "@workspace/ui/components/progress"
-import { Skeleton } from "@workspace/ui/components/skeleton"
-import { Spinner } from "@workspace/ui/components/spinner"
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle } from "@workspace/ui/components/empty"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@workspace/ui/components/dialog"
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@workspace/ui/components/alert-dialog"
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@workspace/ui/components/sheet"
-import { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle, DrawerTrigger } from "@workspace/ui/components/drawer"
-import { Popover, PopoverContent, PopoverTrigger } from "@workspace/ui/components/popover"
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@workspace/ui/components/hover-card"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@workspace/ui/components/dropdown-menu"
-import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "@workspace/ui/components/context-menu"
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@workspace/ui/components/command"
-import { Badge } from "@workspace/ui/components/badge"
-import { Avatar, AvatarFallback } from "@workspace/ui/components/avatar"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@workspace/ui/components/table"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@workspace/ui/components/accordion"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@workspace/ui/components/collapsible"
-import { Label } from "@workspace/ui/components/label"
-import { Kbd } from "@workspace/ui/components/kbd"
-import { Item, ItemContent, ItemGroup, ItemTitle, ItemDescription } from "@workspace/ui/components/item"
-import { Field, FieldDescription, FieldError, FieldLabel } from "@workspace/ui/components/field"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@workspace/ui/components/tooltip"
-import { InfoIcon, BoldIcon, ItalicIcon, UnderlineIcon, SearchIcon, ChevronDownIcon } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@workspace/ui/components/accordion";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@workspace/ui/components/alert";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@workspace/ui/components/alert-dialog";
+import { AspectRatio } from "@workspace/ui/components/aspect-ratio";
+import { Avatar, AvatarFallback } from "@workspace/ui/components/avatar";
+import { Badge } from "@workspace/ui/components/badge";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@workspace/ui/components/breadcrumb";
+import { Button } from "@workspace/ui/components/button";
+import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+  ButtonGroupText,
+} from "@workspace/ui/components/button-group";
+import { Calendar } from "@workspace/ui/components/calendar";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@workspace/ui/components/card";
+import { Checkbox } from "@workspace/ui/components/checkbox";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@workspace/ui/components/collapsible";
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@workspace/ui/components/combobox";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@workspace/ui/components/command";
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@workspace/ui/components/context-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@workspace/ui/components/dialog";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@workspace/ui/components/drawer";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@workspace/ui/components/dropdown-menu";
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
+} from "@workspace/ui/components/empty";
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+} from "@workspace/ui/components/field";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@workspace/ui/components/hover-card";
+import { Input } from "@workspace/ui/components/input";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@workspace/ui/components/input-group";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@workspace/ui/components/input-otp";
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemTitle,
+} from "@workspace/ui/components/item";
+import { Kbd } from "@workspace/ui/components/kbd";
+import { Label } from "@workspace/ui/components/label";
+import { NativeSelect } from "@workspace/ui/components/native-select";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@workspace/ui/components/pagination";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@workspace/ui/components/popover";
+import { Progress } from "@workspace/ui/components/progress";
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@workspace/ui/components/radio-group";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@workspace/ui/components/resizable";
+import { ScrollArea } from "@workspace/ui/components/scroll-area";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@workspace/ui/components/select";
+import { Separator } from "@workspace/ui/components/separator";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@workspace/ui/components/sheet";
+import { Skeleton } from "@workspace/ui/components/skeleton";
+import { Slider } from "@workspace/ui/components/slider";
+import { Spinner } from "@workspace/ui/components/spinner";
+import { Switch } from "@workspace/ui/components/switch";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@workspace/ui/components/table";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@workspace/ui/components/tabs";
+import { Textarea } from "@workspace/ui/components/textarea";
+import { Toggle } from "@workspace/ui/components/toggle";
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@workspace/ui/components/toggle-group";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@workspace/ui/components/tooltip";
+import { cn } from "@workspace/ui/lib/utils";
+import {
+  BoldIcon,
+  ChevronDownIcon,
+  InfoIcon,
+  ItalicIcon,
+  SearchIcon,
+  UnderlineIcon,
+} from "lucide-react";
+import * as React from "react";
 
 const NAV_ITEMS = [
   { id: "buttons", label: "Buttons" },
@@ -61,7 +228,7 @@ const NAV_ITEMS = [
   { id: "overlays", label: "Overlays" },
   { id: "display", label: "Display" },
   { id: "utility", label: "Utility" },
-]
+];
 
 function ComponentCard({
   name,
@@ -69,13 +236,18 @@ function ComponentCard({
   usage,
   className,
 }: {
-  name: string
-  preview: React.ReactNode
-  usage: string
-  className?: string
+  name: string;
+  preview: React.ReactNode;
+  usage: string;
+  className?: string;
 }) {
   return (
-    <div className={cn("flex flex-col overflow-hidden rounded-xl border bg-background", className)}>
+    <div
+      className={cn(
+        "flex flex-col overflow-hidden rounded-xl border bg-background",
+        className,
+      )}
+    >
       <div className="border-b px-4 py-3">
         <h3 className="text-sm font-medium">{name}</h3>
       </div>
@@ -95,7 +267,7 @@ function ComponentCard({
         </AccordionItem>
       </Accordion>
     </div>
-  )
+  );
 }
 
 function ComponentSection({
@@ -103,29 +275,33 @@ function ComponentSection({
   title,
   children,
 }: {
-  id: string
-  title: string
-  children: React.ReactNode
+  id: string;
+  title: string;
+  children: React.ReactNode;
 }) {
   return (
     <section id={id} className="scroll-mt-4 space-y-4">
-      <h2 className="text-lg font-semibold tracking-tight text-balance">{title}</h2>
+      <h2 className="text-lg font-semibold tracking-tight text-balance">
+        {title}
+      </h2>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {children}
       </div>
     </section>
-  )
+  );
 }
 
 export function DesignGuide() {
-  const [date, setDate] = React.useState<Date | undefined>(new Date())
-  const [progress, setProgress] = React.useState(60)
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+  const [progress, setProgress] = React.useState(60);
 
   return (
     <TooltipProvider>
       <div className="mx-auto max-w-5xl space-y-12 px-4 py-10">
         <header>
-          <h1 className="text-3xl font-bold tracking-tight text-balance">Design System</h1>
+          <h1 className="text-3xl font-bold tracking-tight text-balance">
+            Design System
+          </h1>
           <p className="mt-2 text-muted-foreground">
             All UI components. Expand any card to see usage code.
           </p>
@@ -227,7 +403,10 @@ export function DesignGuide() {
                 <ToggleGroupItem value="italic" aria-label="Toggle italic">
                   <ItalicIcon className="size-4" />
                 </ToggleGroupItem>
-                <ToggleGroupItem value="underline" aria-label="Toggle underline">
+                <ToggleGroupItem
+                  value="underline"
+                  aria-label="Toggle underline"
+                >
                   <UnderlineIcon className="size-4" />
                 </ToggleGroupItem>
               </ToggleGroup>
@@ -252,12 +431,25 @@ export function DesignGuide() {
               <div className="w-full max-w-sm space-y-3">
                 <Field>
                   <FieldLabel htmlFor="dg-name">Name</FieldLabel>
-                  <Input id="dg-name" placeholder="Your name" autoComplete="name" />
-                  <FieldDescription>Shown publicly on your profile.</FieldDescription>
+                  <Input
+                    id="dg-name"
+                    placeholder="Your name"
+                    autoComplete="name"
+                  />
+                  <FieldDescription>
+                    Shown publicly on your profile.
+                  </FieldDescription>
                 </Field>
                 <Field>
                   <FieldLabel htmlFor="dg-email">Email</FieldLabel>
-                  <Input id="dg-email" type="email" placeholder="you@example.com" aria-invalid="true" autoComplete="email" spellCheck={false} />
+                  <Input
+                    id="dg-email"
+                    type="email"
+                    placeholder="you@example.com"
+                    aria-invalid="true"
+                    autoComplete="email"
+                    spellCheck={false}
+                  />
                   <FieldError>Please enter a valid email.</FieldError>
                 </Field>
               </div>
@@ -280,7 +472,11 @@ export function DesignGuide() {
               <div className="w-full max-w-xs">
                 <Field>
                   <FieldLabel htmlFor="dg-bio">Bio</FieldLabel>
-                  <Textarea id="dg-bio" placeholder="Tell us about yourself…" rows={3} />
+                  <Textarea
+                    id="dg-bio"
+                    placeholder="Tell us about yourself…"
+                    rows={3}
+                  />
                 </Field>
               </div>
             }
@@ -364,8 +560,18 @@ export function DesignGuide() {
             name="Slider"
             preview={
               <div className="w-full max-w-xs space-y-4">
-                <Slider defaultValue={[40]} max={100} step={1} aria-label="Volume" />
-                <Slider defaultValue={[20, 70]} max={100} step={1} aria-label="Range" />
+                <Slider
+                  defaultValue={[40]}
+                  max={100}
+                  step={1}
+                  aria-label="Volume"
+                />
+                <Slider
+                  defaultValue={[20, 70]}
+                  max={100}
+                  step={1}
+                  aria-label="Range"
+                />
               </div>
             }
             usage={`{/* Single value */}
@@ -386,7 +592,9 @@ export function DesignGuide() {
                     <SelectItem value="apple">Apple</SelectItem>
                     <SelectItem value="banana">Banana</SelectItem>
                     <SelectItem value="cherry">Cherry</SelectItem>
-                    <SelectItem value="durian" disabled>Durian (unavailable)</SelectItem>
+                    <SelectItem value="durian" disabled>
+                      Durian (unavailable)
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -492,7 +700,9 @@ export function DesignGuide() {
           />
           <ComponentCard
             name="Calendar"
-            preview={<Calendar mode="single" selected={date} onSelect={setDate} />}
+            preview={
+              <Calendar mode="single" selected={date} onSelect={setDate} />
+            }
             usage={`const [date, setDate] = React.useState<Date | undefined>()
 
 <Calendar
@@ -514,7 +724,9 @@ export function DesignGuide() {
                   <CardDescription>Launched 12 Jan 2025</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">All systems are green.</p>
+                  <p className="text-sm text-muted-foreground">
+                    All systems are green.
+                  </p>
                 </CardContent>
                 <CardFooter>
                   <Button size="sm">View details</Button>
@@ -625,13 +837,34 @@ export function DesignGuide() {
             preview={
               <Tabs defaultValue="account" className="w-full max-w-xs">
                 <TabsList className="w-full">
-                  <TabsTrigger value="account" className="flex-1">Account</TabsTrigger>
-                  <TabsTrigger value="settings" className="flex-1">Settings</TabsTrigger>
-                  <TabsTrigger value="billing" className="flex-1">Billing</TabsTrigger>
+                  <TabsTrigger value="account" className="flex-1">
+                    Account
+                  </TabsTrigger>
+                  <TabsTrigger value="settings" className="flex-1">
+                    Settings
+                  </TabsTrigger>
+                  <TabsTrigger value="billing" className="flex-1">
+                    Billing
+                  </TabsTrigger>
                 </TabsList>
-                <TabsContent value="account" className="pt-3 text-sm text-muted-foreground">Account settings</TabsContent>
-                <TabsContent value="settings" className="pt-3 text-sm text-muted-foreground">General settings</TabsContent>
-                <TabsContent value="billing" className="pt-3 text-sm text-muted-foreground">Billing information</TabsContent>
+                <TabsContent
+                  value="account"
+                  className="pt-3 text-sm text-muted-foreground"
+                >
+                  Account settings
+                </TabsContent>
+                <TabsContent
+                  value="settings"
+                  className="pt-3 text-sm text-muted-foreground"
+                >
+                  General settings
+                </TabsContent>
+                <TabsContent
+                  value="billing"
+                  className="pt-3 text-sm text-muted-foreground"
+                >
+                  Billing information
+                </TabsContent>
               </Tabs>
             }
             usage={`<Tabs defaultValue="account">
@@ -686,7 +919,9 @@ export function DesignGuide() {
                     <PaginationLink href="#">1</PaginationLink>
                   </PaginationItem>
                   <PaginationItem>
-                    <PaginationLink href="#" isActive>2</PaginationLink>
+                    <PaginationLink href="#" isActive>
+                      2
+                    </PaginationLink>
                   </PaginationItem>
                   <PaginationItem>
                     <PaginationLink href="#">3</PaginationLink>
@@ -721,7 +956,9 @@ export function DesignGuide() {
               <Alert className="w-full max-w-xs">
                 <InfoIcon className="size-4" />
                 <AlertTitle>Heads up!</AlertTitle>
-                <AlertDescription>You can update your settings any time.</AlertDescription>
+                <AlertDescription>
+                  You can update your settings any time.
+                </AlertDescription>
               </Alert>
             }
             usage={`<Alert>
@@ -736,9 +973,14 @@ export function DesignGuide() {
             name="Progress"
             preview={
               <div className="w-full max-w-xs space-y-3">
-                <Progress value={progress} aria-label={`${progress}% complete`} />
+                <Progress
+                  value={progress}
+                  aria-label={`${progress}% complete`}
+                />
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">{progress}%</span>
+                  <span className="text-sm text-muted-foreground">
+                    {progress}%
+                  </span>
                   <div className="flex gap-2">
                     <Button
                       size="sm"
@@ -811,7 +1053,9 @@ export function DesignGuide() {
                   <EmptyDescription>
                     Try adjusting your search or filters.
                   </EmptyDescription>
-                  <Button size="sm" variant="outline">Clear filters</Button>
+                  <Button size="sm" variant="outline">
+                    Clear filters
+                  </Button>
                 </EmptyContent>
               </Empty>
             }
@@ -841,11 +1085,17 @@ export function DesignGuide() {
                 <DialogContent>
                   <DialogHeader>
                     <DialogTitle>Edit profile</DialogTitle>
-                    <DialogDescription>Make changes to your profile here.</DialogDescription>
+                    <DialogDescription>
+                      Make changes to your profile here.
+                    </DialogDescription>
                   </DialogHeader>
                   <Field>
                     <FieldLabel htmlFor="dg-dialog-name">Name</FieldLabel>
-                    <Input id="dg-dialog-name" defaultValue="John Doe" autoComplete="name" />
+                    <Input
+                      id="dg-dialog-name"
+                      defaultValue="John Doe"
+                      autoComplete="name"
+                    />
                   </Field>
                   <div className="flex justify-end gap-2 pt-2">
                     <Button variant="outline">Cancel</Button>
@@ -876,8 +1126,12 @@ export function DesignGuide() {
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                    <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+                    <AlertDialogTitle>
+                      Are you absolutely sure?
+                    </AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action cannot be undone.
+                    </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
@@ -914,7 +1168,9 @@ export function DesignGuide() {
                 <SheetContent>
                   <SheetHeader>
                     <SheetTitle>Edit settings</SheetTitle>
-                    <SheetDescription>Adjust your preferences here.</SheetDescription>
+                    <SheetDescription>
+                      Adjust your preferences here.
+                    </SheetDescription>
                   </SheetHeader>
                 </SheetContent>
               </Sheet>
@@ -942,7 +1198,9 @@ export function DesignGuide() {
                 <DrawerContent>
                   <DrawerHeader>
                     <DrawerTitle>Move goal</DrawerTitle>
-                    <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+                    <DrawerDescription>
+                      Set your daily activity goal.
+                    </DrawerDescription>
                   </DrawerHeader>
                   <div className="p-4" />
                 </DrawerContent>
@@ -970,7 +1228,9 @@ export function DesignGuide() {
                 </PopoverTrigger>
                 <PopoverContent className="w-64">
                   <p className="text-sm font-medium">Dimensions</p>
-                  <p className="mt-1 text-xs text-muted-foreground">Set the dimensions for the layer.</p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Set the dimensions for the layer.
+                  </p>
                 </PopoverContent>
               </Popover>
             }
@@ -992,7 +1252,9 @@ export function DesignGuide() {
                 </HoverCardTrigger>
                 <HoverCardContent className="w-64">
                   <h4 className="text-sm font-semibold">@nextjs</h4>
-                  <p className="mt-1 text-xs text-muted-foreground">The React framework — created and maintained by Vercel.</p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    The React framework — created and maintained by Vercel.
+                  </p>
                 </HoverCardContent>
               </HoverCard>
             }
@@ -1019,7 +1281,9 @@ export function DesignGuide() {
                   <DropdownMenuItem>Profile</DropdownMenuItem>
                   <DropdownMenuItem>Settings</DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem className="text-destructive">Sign out</DropdownMenuItem>
+                  <DropdownMenuItem className="text-destructive">
+                    Sign out
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             }
@@ -1045,7 +1309,9 @@ export function DesignGuide() {
                 <ContextMenuContent>
                   <ContextMenuItem>Copy</ContextMenuItem>
                   <ContextMenuItem>Paste</ContextMenuItem>
-                  <ContextMenuItem className="text-destructive">Delete</ContextMenuItem>
+                  <ContextMenuItem className="text-destructive">
+                    Delete
+                  </ContextMenuItem>
                 </ContextMenuContent>
               </ContextMenu>
             }
@@ -1140,12 +1406,16 @@ export function DesignGuide() {
                 <TableBody>
                   <TableRow>
                     <TableCell className="font-medium">Alice</TableCell>
-                    <TableCell><Badge variant="secondary">Active</Badge></TableCell>
+                    <TableCell>
+                      <Badge variant="secondary">Active</Badge>
+                    </TableCell>
                     <TableCell className="text-right">$250.00</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className="font-medium">Bob</TableCell>
-                    <TableCell><Badge variant="outline">Pending</Badge></TableCell>
+                    <TableCell>
+                      <Badge variant="outline">Pending</Badge>
+                    </TableCell>
                     <TableCell className="text-right">$150.00</TableCell>
                   </TableRow>
                 </TableBody>
@@ -1174,15 +1444,21 @@ export function DesignGuide() {
               <Accordion type="single" collapsible className="w-full max-w-xs">
                 <AccordionItem value="a1">
                   <AccordionTrigger>Is it accessible?</AccordionTrigger>
-                  <AccordionContent>Yes. Built on Radix UI primitives.</AccordionContent>
+                  <AccordionContent>
+                    Yes. Built on Radix UI primitives.
+                  </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="a2">
                   <AccordionTrigger>Is it styled?</AccordionTrigger>
-                  <AccordionContent>Yes. Styled with Tailwind CSS.</AccordionContent>
+                  <AccordionContent>
+                    Yes. Styled with Tailwind CSS.
+                  </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="a3">
                   <AccordionTrigger>Is it animated?</AccordionTrigger>
-                  <AccordionContent>Yes. Smooth open/close transitions.</AccordionContent>
+                  <AccordionContent>
+                    Yes. Smooth open/close transitions.
+                  </AccordionContent>
                 </AccordionItem>
               </Accordion>
             }
@@ -1202,15 +1478,25 @@ export function DesignGuide() {
                 <div className="flex items-center justify-between">
                   <h4 className="text-sm font-medium">Starred repos</h4>
                   <CollapsibleTrigger asChild>
-                    <Button variant="ghost" size="sm" aria-label="Toggle starred repos">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      aria-label="Toggle starred repos"
+                    >
                       <ChevronDownIcon className="size-4" />
                     </Button>
                   </CollapsibleTrigger>
                 </div>
-                <div className="rounded-md border px-4 py-2.5 text-sm">@vercel/next.js</div>
+                <div className="rounded-md border px-4 py-2.5 text-sm">
+                  @vercel/next.js
+                </div>
                 <CollapsibleContent className="space-y-2">
-                  <div className="rounded-md border px-4 py-2.5 text-sm">@shadcn/ui</div>
-                  <div className="rounded-md border px-4 py-2.5 text-sm">@radix-ui/react</div>
+                  <div className="rounded-md border px-4 py-2.5 text-sm">
+                    @shadcn/ui
+                  </div>
+                  <div className="rounded-md border px-4 py-2.5 text-sm">
+                    @radix-ui/react
+                  </div>
                 </CollapsibleContent>
               </Collapsible>
             }
@@ -1261,13 +1547,17 @@ export function DesignGuide() {
                   <Kbd>⌘</Kbd>
                   <span className="text-xs text-muted-foreground">+</span>
                   <Kbd>K</Kbd>
-                  <span className="ml-2 text-sm text-muted-foreground">Command palette</span>
+                  <span className="ml-2 text-sm text-muted-foreground">
+                    Command palette
+                  </span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Kbd>⌘</Kbd>
                   <span className="text-xs text-muted-foreground">+</span>
                   <Kbd>S</Kbd>
-                  <span className="ml-2 text-sm text-muted-foreground">Save</span>
+                  <span className="ml-2 text-sm text-muted-foreground">
+                    Save
+                  </span>
                 </div>
               </div>
             }
@@ -1285,13 +1575,17 @@ export function DesignGuide() {
                 <Item variant="outline">
                   <ItemContent>
                     <ItemTitle>First item</ItemTitle>
-                    <ItemDescription>A brief description of the first item.</ItemDescription>
+                    <ItemDescription>
+                      A brief description of the first item.
+                    </ItemDescription>
                   </ItemContent>
                 </Item>
                 <Item variant="outline">
                   <ItemContent>
                     <ItemTitle>Second item</ItemTitle>
-                    <ItemDescription>A brief description of the second item.</ItemDescription>
+                    <ItemDescription>
+                      A brief description of the second item.
+                    </ItemDescription>
                   </ItemContent>
                 </Item>
               </ItemGroup>
@@ -1313,7 +1607,9 @@ export function DesignGuide() {
               <div className="flex flex-wrap gap-4">
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="sm">Hover me</Button>
+                    <Button variant="outline" size="sm">
+                      Hover me
+                    </Button>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>This is a tooltip</p>
@@ -1321,7 +1617,11 @@ export function DesignGuide() {
                 </Tooltip>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="ghost" size="icon" aria-label="More information">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      aria-label="More information"
+                    >
                       <InfoIcon className="size-4" />
                     </Button>
                   </TooltipTrigger>
@@ -1344,5 +1644,5 @@ export function DesignGuide() {
         </ComponentSection>
       </div>
     </TooltipProvider>
-  )
+  );
 }

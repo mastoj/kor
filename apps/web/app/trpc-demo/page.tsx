@@ -1,30 +1,40 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"
-import { useTRPC } from "@/lib/trpc"
-import { Button } from "@workspace/ui/components/button"
-import { Input } from "@workspace/ui/components/input"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@workspace/ui/components/card"
-import { Badge } from "@workspace/ui/components/badge"
-import { Skeleton } from "@workspace/ui/components/skeleton"
-import { Separator } from "@workspace/ui/components/separator"
+import { useTRPC } from "@/lib/trpc";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Badge } from "@workspace/ui/components/badge";
+import { Button } from "@workspace/ui/components/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@workspace/ui/components/card";
+import { Input } from "@workspace/ui/components/input";
+import { Separator } from "@workspace/ui/components/separator";
+import { Skeleton } from "@workspace/ui/components/skeleton";
+import * as React from "react";
 
 export default function TRPCDemoPage() {
-  const trpc = useTRPC()
-  const queryClient = useQueryClient()
-  const [name, setName] = React.useState("")
+  const trpc = useTRPC();
+  const queryClient = useQueryClient();
+  const [name, setName] = React.useState("");
 
-  const { data: items, isLoading, error } = useQuery(trpc.items.list.queryOptions())
+  const {
+    data: items,
+    isLoading,
+    error,
+  } = useQuery(trpc.items.list.queryOptions());
 
   const createItem = useMutation(
     trpc.items.create.mutationOptions({
       onSuccess: () => {
-        void queryClient.invalidateQueries(trpc.items.list.queryFilter())
-        setName("")
+        void queryClient.invalidateQueries(trpc.items.list.queryFilter());
+        setName("");
       },
-    })
-  )
+    }),
+  );
 
   return (
     <div className="container mx-auto py-10 px-4 max-w-2xl space-y-8">
@@ -44,9 +54,9 @@ export default function TRPCDemoPage() {
           <form
             className="flex gap-2"
             onSubmit={(e) => {
-              e.preventDefault()
+              e.preventDefault();
               if (name.trim()) {
-                createItem.mutate({ name: name.trim() })
+                createItem.mutate({ name: name.trim() });
               }
             }}
           >
@@ -57,7 +67,10 @@ export default function TRPCDemoPage() {
               disabled={createItem.isPending}
               className="flex-1"
             />
-            <Button type="submit" disabled={createItem.isPending || !name.trim()}>
+            <Button
+              type="submit"
+              disabled={createItem.isPending || !name.trim()}
+            >
               {createItem.isPending ? "Adding..." : "Add"}
             </Button>
           </form>
@@ -117,5 +130,5 @@ export default function TRPCDemoPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
