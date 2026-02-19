@@ -31,6 +31,9 @@ try {
   process.exit(1);
 }
 
+// Remove the scaffolding package from the generated project
+fs.rmSync(path.join(dest, "create-kor"), { recursive: true, force: true });
+
 // Update root package.json name
 const pkgPath = path.join(dest, "package.json");
 const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf-8"));
