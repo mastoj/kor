@@ -2,6 +2,12 @@
 
 # ── Development ───────────────────────────────────────────────────────────────
 
+.PHONY: kor
+kor: ## Install dependencies, push DB schema, and start dev servers
+	pnpm install
+	pnpm db:push
+	pnpm dev
+
 .PHONY: install
 install: ## Install all dependencies
 	pnpm install

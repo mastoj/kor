@@ -19,6 +19,15 @@ This will:
 
 ## Getting started
 
+If you have [Make](https://www.gnu.org/software/make/) installed, a single command handles everything:
+
+```bash
+cd <project-name>
+make kor
+```
+
+Otherwise, run the steps manually:
+
 ```bash
 cd <project-name>
 pnpm install
