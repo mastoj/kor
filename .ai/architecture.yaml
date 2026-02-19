@@ -1,0 +1,22 @@
+package_graph:
+  web: [ui, api_type_only]
+  api: [domain, db, shared]
+  domain: [db, shared]
+  db: []
+  shared: []
+
+data_flow:
+  - browser → next_web (RSC + client components)
+  - next_web → trpc_client (httpBatchLink → port 3001/trpc)
+  - hono_api → trpc_router → domain_service → db_client → sqlite_or_postgres
+
+type_boundary:
+  pattern: "import type { AppRouter } from 'api/src/router.ts'"
+  note: erased at compile time, zero server code in browser bundle
+
+key_files:
+  router: apps/api/src/router.ts
+  trpc_client: apps/web/lib/trpc.ts
+  db_schema: packages/db/src/schema.ts
+  db_client: packages/db/src/client.ts
+  item_service: packages/domain/src/items/item-service.ts

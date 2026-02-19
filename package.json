@@ -6,7 +6,9 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "db:generate": "turbo db:generate --filter=@workspace/db",
+    "db:push": "turbo db:push --filter=@workspace/db"
   },
   "devDependencies": {
     "@workspace/eslint-config": "workspace:*",
@@ -18,5 +20,8 @@
   "packageManager": "pnpm@10.4.1",
   "engines": {
     "node": ">=20"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["better-sqlite3", "esbuild"]
   }
 }

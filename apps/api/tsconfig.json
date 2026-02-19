@@ -1,0 +1,16 @@
+{
+  "extends": "@workspace/typescript-config/node.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@workspace/db": ["../../packages/db/src/index.ts"],
+      "@workspace/db/*": ["../../packages/db/src/*.ts"],
+      "@workspace/domain": ["../../packages/domain/src/index.ts"],
+      "@workspace/domain/*": ["../../packages/domain/src/*.ts"],
+      "@workspace/shared": ["../../packages/shared/src/index.ts"],
+      "@workspace/shared/*": ["../../packages/shared/src/*.ts"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@workspace/db",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./src/schema.ts",
+    "./client": "./src/client.ts"
+  },
+  "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:migrate": "drizzle-kit migrate"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.43.1",
+    "better-sqlite3": "^11.10.0"
+  },
+  "optionalDependencies": {
+    "postgres": "^3.4.7"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@workspace/typescript-config": "workspace:*",
+    "drizzle-kit": "^0.31.0",
+    "typescript": "^5.9.3"
+  }
+}

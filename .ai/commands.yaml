@@ -1,0 +1,13 @@
+dev: pnpm dev            # starts web+api via Turbo
+db_push: pnpm db:push    # creates/updates schema (SQLite locally)
+db_gen: pnpm db:generate # generate migration files
+install: pnpm install
+lint: pnpm lint
+typecheck: pnpm typecheck
+build: pnpm build
+
+urls:
+  web: http://localhost:3000
+  api_health: http://localhost:3001/health
+  design: http://localhost:3000/design
+  trpc_demo: http://localhost:3000/trpc-demo

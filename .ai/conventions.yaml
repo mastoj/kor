@@ -1,0 +1,12 @@
+module_system: ESM (type:"module" on all packages)
+package_exports: source .ts files directly (no build step for packages)
+module_resolution:
+  non_react: NodeNext (requires .ts extension in relative imports)
+  nextjs: Bundler
+naming:
+  packages: "@workspace/" prefix for shared packages
+  apps: plain name (web, api)
+workspace_dep_for_types_only: add as devDependency + tsconfig path alias
+db_dialects:
+  local: SQLite via better-sqlite3 (NODE_ENV != production)
+  prod: Postgres via postgres.js (NODE_ENV == production)

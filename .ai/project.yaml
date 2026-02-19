@@ -1,0 +1,13 @@
+name: kor
+apps:
+  web: 3000
+  api: 3001
+packages:
+  - ui
+  - db
+  - domain
+  - shared
+  - eslint-config
+  - typescript-config
+package_manager: pnpm@10.4.1
+node: ">=20"

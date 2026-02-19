@@ -1,0 +1,21 @@
+add_trpc_procedure:
+  file: apps/api/src/router.ts
+  note: add procedure inside appRouter (or a nested sub-router)
+
+add_drizzle_table:
+  file: packages/db/src/schema.ts
+  note: add sqliteTable + pgTable definitions, export from src/index.ts
+
+add_domain_service:
+  file: packages/domain/src/
+  note: create class with async methods calling getDbContext(), export singleton
+
+add_design_section:
+  file: apps/web/app/design/page.tsx
+  note: add <Section title="..."> block with component demos
+
+trpc_client_usage:
+  pattern: |
+    const trpc = useTRPC()
+    const { data } = useQuery(trpc.items.list.queryOptions())
+    const mut = useMutation(trpc.items.create.mutationOptions({ onSuccess: ... }))
