@@ -23,16 +23,7 @@ A full-stack monorepo starter built with Next.js, Hono, tRPC, Drizzle ORM, and s
 
 ## Getting Started
 
-```bash
-pnpm install
-pnpm db:push   # create local SQLite schema
-pnpm dev       # start web + api
-```
-
-- Web: http://localhost:3000
-- API health: http://localhost:3001/health
-- Design system: http://localhost:3000/design
-- tRPC demo: http://localhost:3000/trpc-demo
+See [docs/getting-started.md](./docs/getting-started.md) for full setup instructions.
 
 ## Adding UI Components
 
