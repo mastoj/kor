@@ -11,14 +11,18 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@workspace/ui/components/sidebar";
-import { LayoutDashboard, Palette, Zap } from "lucide-react";
+import { Bot, LayoutDashboard, LayoutTemplate, Zap } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navItems = [
   { title: "Home", url: "/", icon: LayoutDashboard },
   { title: "tRPC Demo", url: "/trpc-demo", icon: Zap },
-  { title: "Design System", url: "/design", icon: Palette },
+];
+
+const designItems = [
+  { title: "Components", url: "/design", icon: LayoutTemplate },
+  { title: "AI Design", url: "/design/ai", icon: Bot },
 ];
 
 export function AppSidebar() {
@@ -37,6 +41,24 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {navItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton
+                    render={<Link href={item.url} />}
+                    isActive={pathname === item.url}
+                  >
+                    <item.icon />
+                    <span>{item.title}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Design System</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {designItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
                     render={<Link href={item.url} />}

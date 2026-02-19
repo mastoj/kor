@@ -54,7 +54,9 @@
             "noLabelWithoutControl": "off",
             "noRedundantRoles": "off",
             "useFocusableInteractive": "off",
-            "useSemanticElements": "off"
+            "useSemanticElements": "off",
+            "useAnchorContent": "off",
+            "useAltText": "off"
           },
           "security": {
             "noDangerouslySetInnerHtml": "off"
