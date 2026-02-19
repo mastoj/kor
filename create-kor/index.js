@@ -51,7 +51,14 @@ execSync("git init && git add . && git commit -m 'Initial commit'", {
   stdio: "inherit",
 });
 
-console.log("\nDone! Next steps:\n");
+console.log("");
+console.log("  ~~ ~  ______________");
+console.log("          \\   K O R    \\___");
+console.log("  ~~ ~     |  o      o  |==>");
+console.log("            \\____________/");
+console.log("             (_)      (_)");
+console.log("");
+console.log("Done! Next steps:\n");
 console.log(`  cd ${projectName}`);
 console.log("");
 console.log("  If you have Make installed:");
