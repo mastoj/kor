@@ -1,0 +1,50 @@
+unit:
+  runner: vitest
+  config: vitest.config.ts  # root; lists projects under test.projects
+  projects:
+    - packages/domain       # add new packages here as tests are added
+  commands:
+    run: pnpm test
+    watch: pnpm test:watch
+    single_package: pnpm --filter @workspace/domain test
+  file_location: src/**/__tests__/*.test.ts  # co-located with source
+  conventions:
+    - mock external dependencies (db, APIs) with vi.mock()
+    - one describe block per class/module
+    - nest describe blocks by method name
+    - use beforeEach to reset vi.clearAllMocks()
+  example_mock: |
+    vi.mock('@workspace/db/client', () => ({
+      getDbContext: vi.fn(() => Promise.resolve({ db: mockDb, items: {} })),
+    }))
+
+e2e:
+  runner: playwright
+  config: apps/e2e/playwright.config.ts
+  browser: chromium only (add more in playwright.config.ts if needed)
+  commands:
+    run: pnpm test:e2e          # spins up web + api via webServer config
+    ui_mode: pnpm --filter e2e exec playwright test --ui
+  file_location: apps/e2e/tests/*.spec.ts
+  conventions:
+    - smoke tests only in pre-merge; deep flows can live in separate files
+    - prefer request fixture for API assertions (no page needed)
+    - use baseURL-relative paths for web: page.goto('/some-path')
+
+pre_commit:
+  hook: .husky/pre-commit
+  runs: pnpm test  # unit tests only — e2e excluded (requires running servers)
+  note: e2e tests are meant for CI, not local pre-commit
+
+adding_tests:
+  new_domain_service: |
+    1. Create src/<domain>/__tests__/<service>.test.ts
+    2. vi.mock('@workspace/db/client') at the top
+    3. Test public methods; assert return values and db call args
+  new_e2e_flow: |
+    1. Add *.spec.ts in apps/e2e/tests/
+    2. Run `pnpm --filter e2e exec playwright test --ui` to develop interactively
+  new_package: |
+    1. Add vitest.config.ts to the package
+    2. Add "test": "vitest run" script to the package's package.json
+    3. Add the package path to test.projects in root vitest.config.ts
