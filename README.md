@@ -1,31 +1,58 @@
-# shadcn/ui monorepo template
+# kor
 
-This template is for creating a monorepo with shadcn/ui.
+A full-stack monorepo starter built with Next.js, Hono, tRPC, Drizzle ORM, and shadcn/ui.
 
-## Usage
+## Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js (App Router, RSC) |
+| Backend | Hono API server with tRPC |
+| Database | Drizzle ORM — SQLite locally, Postgres in production |
+| UI | shadcn/ui components in `packages/ui` |
+| Monorepo | Turborepo + pnpm workspaces |
+
+## Apps & Packages
+
+- `apps/web` — Next.js frontend (port 3000)
+- `apps/api` — Hono API server with tRPC router (port 3001)
+- `packages/ui` — Shared shadcn/ui component library
+- `packages/db` — Drizzle schema, client, and migrations
+- `packages/domain` — Business logic / domain services
+- `packages/shared` — Shared types and utilities
+
+## Getting Started
 
 ```bash
-pnpm dlx shadcn@latest init
+pnpm install
+pnpm db:push   # create local SQLite schema
+pnpm dev       # start web + api
 ```
 
-## Adding components
+- Web: http://localhost:3000
+- API health: http://localhost:3001/health
+- Design system: http://localhost:3000/design
+- tRPC demo: http://localhost:3000/trpc-demo
 
-To add components to your app, run the following command at the root of your `web` app:
+## Adding UI Components
 
 ```bash
-pnpm dlx shadcn@latest add button -c apps/web
+pnpm dlx shadcn@latest add <component> -c apps/web
 ```
 
-This will place the ui components in the `packages/ui/src/components` directory.
-
-## Tailwind
-
-Your `tailwind.config.ts` and `globals.css` are already set up to use the components from the `ui` package.
-
-## Using components
-
-To use the components in your app, import them from the `ui` package.
+Components land in `packages/ui/src/components` and are imported as:
 
 ```tsx
 import { Button } from "@workspace/ui/components/button"
+```
+
+## Common Commands
+
+```bash
+pnpm dev           # start all apps
+pnpm build         # build all apps
+pnpm lint          # lint all packages
+pnpm typecheck     # type-check all packages
+pnpm db:push       # push schema changes (SQLite locally)
+pnpm db:generate   # generate migration files
 ```
