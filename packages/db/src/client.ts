@@ -1,4 +1,12 @@
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { itemsPg, itemsSqlite } from "./schema.ts";
+
+// Resolves to <repo-root>/local.db regardless of which directory the process runs from
+const DEFAULT_DB_PATH = join(
+  dirname(fileURLToPath(import.meta.url)),
+  "../../../local.db",
+);
 
 type DbContext =
   | {
@@ -30,7 +38,7 @@ export async function getDbContext(): Promise<DbContext> {
     const Database = (await import("better-sqlite3")).default;
     _ctx = {
       dialect: "sqlite",
-      db: drizzle(new Database(process.env.DATABASE_URL ?? "local.db")),
+      db: drizzle(new Database(process.env.DATABASE_URL ?? DEFAULT_DB_PATH)),
       items: itemsSqlite,
     };
   }
