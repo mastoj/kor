@@ -12,7 +12,8 @@
       "**/dist",
       "**/coverage",
       "pnpm-lock.yaml",
-      "packages/typescript-config/**"
+      "packages/typescript-config/**",
+      ".claude/**"
     ]
   },
   "formatter": {
