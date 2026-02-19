@@ -3,18 +3,23 @@ import type { Item } from "@workspace/db/schema";
 
 export class ItemService {
   async listItems(): Promise<Item[]> {
-    const { db, items } = await getDbContext();
-    return db
-      .select()
-      .from(items as never)
-      .all() as unknown as Item[];
+    const ctx = await getDbContext();
+    if (ctx.dialect === "sqlite") {
+      return ctx.db.select().from(ctx.items).all() as unknown as Item[];
+    }
+    return ctx.db.select().from(ctx.items) as unknown as Item[];
   }
 
   async createItem(name: string): Promise<Item> {
-    const { db, items } = await getDbContext();
+    const ctx = await getDbContext();
     const id = crypto.randomUUID();
-    const createdAt = new Date().toISOString();
-    await db.insert(items as never).values({ id, name, createdAt });
+    if (ctx.dialect === "sqlite") {
+      const createdAt = new Date().toISOString();
+      await ctx.db.insert(ctx.items).values({ id, name, createdAt });
+      return { id, name, createdAt };
+    }
+    const createdAt = new Date();
+    await ctx.db.insert(ctx.items).values({ id, name, createdAt });
     return { id, name, createdAt };
   }
 }

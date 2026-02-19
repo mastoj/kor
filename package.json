@@ -12,6 +12,7 @@
     "db:push": "turbo db:push --filter=@workspace/db",
     "test": "vitest run",
     "test:watch": "vitest",
+    "typecheck": "turbo typecheck",
     "test:e2e": "turbo test:e2e",
     "prepare": "husky"
   },

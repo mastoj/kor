@@ -7,6 +7,7 @@ const mockValues = vi.fn();
 vi.mock("@workspace/db/client", () => ({
   getDbContext: vi.fn(() =>
     Promise.resolve({
+      dialect: "sqlite",
       db: {
         select: vi.fn(() => ({ from: vi.fn(() => ({ all: mockAll })) })),
         insert: vi.fn(() => ({ values: mockValues })),

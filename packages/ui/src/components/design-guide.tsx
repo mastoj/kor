@@ -770,7 +770,7 @@ export function DesignGuide() {
             name="Resizable"
             preview={
               <div className="h-32 w-full max-w-xs overflow-hidden rounded-lg border">
-                <ResizablePanelGroup direction="horizontal">
+                <ResizablePanelGroup orientation="horizontal">
                   <ResizablePanel defaultSize={50}>
                     <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
                       Left

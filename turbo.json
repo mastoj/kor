@@ -8,8 +8,8 @@
       "outputs": [".next/**", "!.next/cache/**", "dist/**"],
       "env": ["DATABASE_URL", "NEXT_PUBLIC_API_URL"]
     },
-    "check-types": {
-      "dependsOn": ["^check-types"]
+    "typecheck": {
+      "dependsOn": ["^typecheck"]
     },
     "dev": {
       "cache": false,

@@ -12,6 +12,7 @@
     "@workspace/shared": "workspace:*"
   },
   "scripts": {
+    "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },
   "devDependencies": {
