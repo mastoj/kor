@@ -11,6 +11,7 @@ Project context is maintained in `.ai/`:
 - `.ai/commit.yaml` — commit message format and conventions
 - `.ai/linting.yaml` — biome setup, rules, and overrides
 - `.ai/testing.yaml` — testing setup, conventions, and how to add tests
+- `.ai/ui.yaml` — UI library (Base UI), component patterns, render vs asChild
 
 ## Adding UI Components
 

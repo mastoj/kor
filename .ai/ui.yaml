@@ -1,0 +1,58 @@
+library: "@base-ui/react (via shadcn base-nova style)"
+components_location: packages/ui/src/components/
+add_component: "pnpm dlx shadcn@latest add <component> -c apps/web"
+import_pattern: 'import { Button } from "@workspace/ui/components/button"'
+
+primitive_differences_from_radix:
+  render_vs_asChild:
+    summary: Base UI uses `render` prop instead of Radix's `asChild`
+    wrong: |
+      <DialogTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DialogTrigger>
+    correct: |
+      <DialogTrigger render={<Button variant="outline" />}>
+        Open
+      </DialogTrigger>
+    applies_to:
+      - DialogTrigger / AlertDialogTrigger / SheetTrigger
+      - PopoverTrigger / HoverCardTrigger
+      - DropdownMenuTrigger / ContextMenuTrigger
+      - CollapsibleTrigger
+      - TooltipTrigger
+    note: >
+      The render prop merges props onto the provided element.
+      Put text/icon children inside the outer Trigger, not the render element.
+
+  accordion:
+    summary: No `type` or `collapsible` props — Base UI accordion is always multi-open
+    wrong: '<Accordion type="single" collapsible>'
+    correct: "<Accordion>"
+    note: >
+      If single-open behaviour is required, use controlled `openItems` state
+      on AccordionPrimitive.Root directly.
+
+  toggle_group:
+    summary: No `type` prop — Base UI ToggleGroup does not distinguish single/multiple
+    wrong: '<ToggleGroup type="multiple" defaultValue={["bold"]}>'
+    correct: '<ToggleGroup defaultValue={["bold"]}>'
+
+  data_attributes:
+    summary: State is exposed via data-attributes instead of aria variants
+    examples:
+      - "data-open / data-closed (replaces data-state=open/closed)"
+      - "data-checked (replaces data-state=checked)"
+      - "group-aria-expanded → group-data-open"
+    note: Tailwind variants like `data-open:animate-in` work as expected.
+
+styling:
+  approach: Tailwind CSS v4 + CSS variables
+  animation_classes: "data-open:animate-in / data-closed:animate-out"
+  merge_utility: "cn() from @workspace/ui/lib/utils (clsx + tailwind-merge)"
+  class_variance_authority: used for component variants (Button, Badge, etc.)
+
+design_guide:
+  file: packages/ui/src/components/design-guide.tsx
+  note: >
+    Add new components here so they appear on /design.
+    Use <ComponentSection id="..." title="..."> and <ComponentCard name="...">.

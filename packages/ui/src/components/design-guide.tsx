@@ -254,7 +254,7 @@ function ComponentCard({
       <div className="flex flex-1 items-center justify-center p-6 bg-muted/20 min-h-36">
         {preview}
       </div>
-      <Accordion type="single" collapsible className="border-t">
+      <Accordion className="border-t">
         <AccordionItem value="code" className="border-none">
           <AccordionTrigger className="px-4 py-2.5 text-xs text-muted-foreground hover:no-underline [&>svg]:size-3.5">
             View code
@@ -396,7 +396,7 @@ export function DesignGuide() {
           <ComponentCard
             name="ToggleGroup"
             preview={
-              <ToggleGroup type="multiple" defaultValue={["bold"]}>
+              <ToggleGroup defaultValue={["bold"]}>
                 <ToggleGroupItem value="bold" aria-label="Toggle bold">
                   <BoldIcon className="size-4" />
                 </ToggleGroupItem>
@@ -1079,8 +1079,8 @@ export function DesignGuide() {
             name="Dialog"
             preview={
               <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="outline">Open dialog</Button>
+                <DialogTrigger render={<Button variant="outline" />}>
+                  Open dialog
                 </DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
@@ -1121,8 +1121,8 @@ export function DesignGuide() {
             name="AlertDialog"
             preview={
               <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button variant="destructive">Delete account</Button>
+                <AlertDialogTrigger render={<Button variant="destructive" />}>
+                  Delete account
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
@@ -1162,8 +1162,8 @@ export function DesignGuide() {
             name="Sheet"
             preview={
               <Sheet>
-                <SheetTrigger asChild>
-                  <Button variant="outline">Open sheet</Button>
+                <SheetTrigger render={<Button variant="outline" />}>
+                  Open sheet
                 </SheetTrigger>
                 <SheetContent>
                   <SheetHeader>
@@ -1223,8 +1223,8 @@ export function DesignGuide() {
             name="Popover"
             preview={
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button variant="outline">Open popover</Button>
+                <PopoverTrigger render={<Button variant="outline" />}>
+                  Open popover
                 </PopoverTrigger>
                 <PopoverContent className="w-64">
                   <p className="text-sm font-medium">Dimensions</p>
@@ -1247,8 +1247,8 @@ export function DesignGuide() {
             name="HoverCard"
             preview={
               <HoverCard>
-                <HoverCardTrigger asChild>
-                  <Button variant="link">@nextjs</Button>
+                <HoverCardTrigger render={<Button variant="link" />}>
+                  @nextjs
                 </HoverCardTrigger>
                 <HoverCardContent className="w-64">
                   <h4 className="text-sm font-semibold">@nextjs</h4>
@@ -1272,8 +1272,8 @@ export function DesignGuide() {
             name="DropdownMenu"
             preview={
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline">Open menu</Button>
+                <DropdownMenuTrigger render={<Button variant="outline" />}>
+                  Open menu
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -1441,7 +1441,7 @@ export function DesignGuide() {
           <ComponentCard
             name="Accordion"
             preview={
-              <Accordion type="single" collapsible className="w-full max-w-xs">
+              <Accordion className="w-full max-w-xs">
                 <AccordionItem value="a1">
                   <AccordionTrigger>Is it accessible?</AccordionTrigger>
                   <AccordionContent>
@@ -1477,14 +1477,16 @@ export function DesignGuide() {
               <Collapsible className="w-full max-w-xs space-y-2">
                 <div className="flex items-center justify-between">
                   <h4 className="text-sm font-medium">Starred repos</h4>
-                  <CollapsibleTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      aria-label="Toggle starred repos"
-                    >
-                      <ChevronDownIcon className="size-4" />
-                    </Button>
+                  <CollapsibleTrigger
+                    render={
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        aria-label="Toggle starred repos"
+                      />
+                    }
+                  >
+                    <ChevronDownIcon className="size-4" />
                   </CollapsibleTrigger>
                 </div>
                 <div className="rounded-md border px-4 py-2.5 text-sm">
@@ -1606,24 +1608,26 @@ export function DesignGuide() {
             preview={
               <div className="flex flex-wrap gap-4">
                 <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="outline" size="sm">
-                      Hover me
-                    </Button>
+                  <TooltipTrigger
+                    render={<Button variant="outline" size="sm" />}
+                  >
+                    Hover me
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>This is a tooltip</p>
                   </TooltipContent>
                 </Tooltip>
                 <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      aria-label="More information"
-                    >
-                      <InfoIcon className="size-4" />
-                    </Button>
+                  <TooltipTrigger
+                    render={
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        aria-label="More information"
+                      />
+                    }
+                  >
+                    <InfoIcon className="size-4" />
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Icon tooltips too</p>
