@@ -1,6 +1,10 @@
-# kor
+# kör
 
 A full-stack monorepo starter built with Next.js, Hono, tRPC, Drizzle ORM, and shadcn/ui.
+
+## The name
+
+**kör** is the Swedish word for *drive* — as in to drive forward, to run, to make things go. It captures the spirit of the project: a starter that gets you moving fast, without friction. Since ö can be awkward on non-Swedish keyboards, all commands and package names use the ASCII-friendly `kor`.
 
 ## Stack
 

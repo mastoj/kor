@@ -1,6 +1,6 @@
 # create-kor
 
-Scaffold a new **kor** full-stack monorepo in seconds.
+Scaffold a new **kör** full-stack monorepo in seconds.
 
 ## Usage
 
@@ -12,7 +12,7 @@ npx create-kor <project-name>
 
 This will:
 
-1. Clone the [kor](https://github.com/mastoj/kor) monorepo template into a new `<project-name>` directory
+1. Clone the [kör](https://github.com/mastoj/kor) monorepo template into a new `<project-name>` directory
 2. Set the root `package.json` name to your project name
 3. Create `apps/web/.env.local` with a default API URL
 4. Initialise a fresh git repository with an initial commit
