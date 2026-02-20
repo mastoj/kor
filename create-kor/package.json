@@ -1,7 +1,8 @@
 {
   "name": "create-kor",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Create a new kor project",
+  "license": "MIT",
   "type": "module",
   "bin": {
     "create-kor": "./index.js"
